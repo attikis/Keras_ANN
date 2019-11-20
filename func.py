@@ -10,6 +10,15 @@ import json
 #================================================================================================   
 # Function definition
 #================================================================================================   
+def Print(msg, printHeader=False):
+    fName = __file__.split("/")[-1]
+    if printHeader==True:
+        print "=== ", fName
+        print "\t", msg
+    else:
+        print "\t", msg
+    return
+   
 def convertHistoToGaph(histo, verbose=False):
                                                                                                                                                                                                             
     # Lists for values
@@ -462,9 +471,10 @@ def PlotROC(graphMap, saveDir, saveName, saveFormats):
     canvas = plot.CreateCanvas()
     canvas.cd()
 
-    leg=plot.CreateLegend(0.50, 0.25, 0.85, 0.45)    
+    leg = plot.CreateLegend(0.25, 0.25, 0.60, 0.45) #0.50, 0.25, 0.85, 0.45
 
-    for i in range(len(graphMap)):
+    # For-loop: All graphs
+    for i, k in enumerate(graphMap["graph"], 0):
         gr = graphMap["graph"][i]
         gr_name = graphMap["name"][i]
         plot.ApplyStyle(gr, i+2)
@@ -623,5 +633,5 @@ def WriteModel(model, model_json, output):
                 # Store bias values (shifts the activation function : output[i] = (Sum(weights[i,j]*inputs[j]) + bias[i]))
                 biases = model.layers[index].get_weights()[1]
                 fout.write(str(biases) + '\n')
-        print 'Writing model in', output
+        Print('Writing model in file %s' % (output), True)
         return
