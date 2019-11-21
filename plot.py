@@ -176,12 +176,12 @@ def GetHistoInfo(var):
     if "trijetptdr" in h:
         xmax =800
         _format = "%0.0f "
-        xlabel = "p_{T}#Delta R_{t}"
+        xlabel = "p_{T}#DeltaR_{t}"
 
     if "dijetptdr" in h:
         xmax =800
         _format = "%0.0f "
-        xlabel = "p_{T}#Delta R_{W}"
+        xlabel = "p_{T}#DeltaR_{W}"
 
     if "dgjetptd" in h:
         _format = "%0.2f "
